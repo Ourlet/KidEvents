@@ -1,10 +1,13 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 
+const startDate = "30%2F01%2F2023";
+const endDate = "05%2F02%2F2023";
+
 const fetchEvents = async () => {
   try {
     const response = await axios.get(
-      "https://www.lausanne-tourisme.ch/wp/wp-admin/admin-ajax.php?action=filter_events&lang=fr&starting_date=30%2F01%2F2023&ending_date=05%2F02%2F2023&text_search=&tags%5B%5D=36"
+      `https://www.lausanne-tourisme.ch/wp/wp-admin/admin-ajax.php?action=filter_events&lang=fr&starting_date=${startDate}&ending_date=${endDate}&text_search=&tags%5B%5D=36`
     );
     const json = response.data;
     const html = json.html;
